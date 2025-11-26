@@ -1,138 +1,532 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shashank Ghimire — Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashank Ghimire - Network Engineer & Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Vintage monospace font -->
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'VT323', monospace; }
-    button{font-family:inherit}
-  </style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+            border-left: 3px solid #667eea;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .publication-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            margin: 0.5rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<pre>
-+-------------------------------------------------------------+
-|                                                             |
-|   SHASHANK GHIMIRE                                          |
-|   Kathmandu, Nepal                                          |
-|                                                             |
-+-------------------------------------------------------------+
-</pre>
+    <header>
+        <nav class="container">
+            <div class="logo">SG</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<p>
-  Email: <a href="mailto:shashank.ghimire8848@gmail.com">shashank.ghimire8848@gmail.com</a>
-  &nbsp;|&nbsp;
-  Phone: +977 98102 33895
-</p>
+    <div class="hero">
+        <div class="container">
+            <h1>Shashank Ghimire</h1>
+            <p>Network and Linux Enthusiast | System Administrator | Cybersecurity Researcher</p>
+            <div class="social-links">
+                <a href="mailto:shashank.ghimire8848@gmail.com">Email</a>
+                <a href="https://github.com/Shashank7777" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/shashank-ghimire-b51759199/" target="_blank">LinkedIn</a>
+                <a href="https://medium.com/@redemption8848" target="_blank">Medium</a>
+            </div>
+        </div>
+    </div>
 
-<p>
-  Links:
-  <a href="https://github.com/Shashank7777" target="_blank" rel="noopener">github.com/Shashank7777</a>
-  |
-  <a href="https://www.linkedin.com/in/shashank-ghimire-b51759199/" target="_blank" rel="noopener">linkedin.com/in/shashank-ghimire-b51759199</a>
-  |
-  <a href="https://medium.com/@redemption8848" target="_blank" rel="noopener">medium.com/@redemption8848</a>
-  |
-  <a href="/mnt/data/Resume-Shashank-Ghimire.pdf" download>Download CV (PDF)</a>
-  &nbsp;|&nbsp;
-  <button id="printBtn">Print</button>
-</p>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                I am a motivated Electronics, Communication, and Information Engineering graduate with hands-on experience in system administration, infrastructure monitoring, and network architecture. With a strong foundation in Linux systems, networking protocols, and cybersecurity, I am passionate about solving complex technical challenges and contributing to cutting-edge research in network security and system internals. My interests include Software-Defined Networking (SDN), Network Functions Virtualization (NFV), Programmable Networks, and applying AI/ML techniques for network optimization and intelligent automation. Currently serving as a Teaching Faculty at NCMT, I mentor students while continuously expanding my expertise in DevOps, eBPF, and cloud infrastructure.
+            </p>
+        </section>
 
-<hr>
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Teaching Faculty</h3>
+                <div class="experience-meta">NCMT (National College of Management and Technology) | May 2025 – Present | Kathmandu, Nepal</div>
+                <ul>
+                    <li>Teaching advanced computer networking and digital logic design to IT students</li>
+                    <li>Developing hands-on course materials and conducting lab sessions with network simulation tools</li>
+                    <li>Mentoring students on research projects and academic pursuits</li>
+                </ul>
+            </div>
 
-<h2>About</h2>
-<pre>
-Practical systems engineer focused on Linux internals, network security,
-and observability. I build reliable infrastructure, integrate monitoring
-pipelines, and document reproducible procedures for labs and production.
-</pre>
+            <div class="experience-item">
+                <h3>System Administrator</h3>
+                <div class="experience-meta">Silver Lining Pvt. Ltd. | Dec 2024 – May 2025 | Kathmandu, Nepal</div>
+                <ul>
+                    <li>Installed, configured, and maintained enterprise servers ensuring optimal performance and uptime</li>
+                    <li>Integrated Prometheus and Grafana for performance metrics and log analysis</li>
+                    <li>Implemented data backup strategies and disaster recovery plans for business continuity</li>
+                    <li>Monitored system performance and resolved technical problems to minimize downtime</li>
+                </ul>
+            </div>
 
-<hr>
+            <div class="experience-item">
+                <h3>Infrastructure Monitoring and Support</h3>
+                <div class="experience-meta">Classic Tech. Pvt. Ltd. | Oct 2023 – Sep 2024 | Kathmandu, Nepal</div>
+                <ul>
+                    <li>Designed and maintained data-center infrastructure including servers, routers, switches, and firewalls</li>
+                    <li>Monitored internal servers, network traffic, and latency for optimal network management</li>
+                    <li>Implemented monitoring software for proactive performance tracking of CDNs and network devices</li>
+                    <li>Researched and recommended emerging networking technologies across multi-vendor platforms</li>
+                </ul>
+            </div>
 
-<h2>Education</h2>
-<p><strong>2019 – 2024</strong><br>
-Bachelor's in Electronics, Communication and Information Engineering<br>
-IOE, Thapathali Engineering Campus — Kathmandu, Nepal</p>
+            <div class="experience-item">
+                <h3>Network Support Engineer</h3>
+                <div class="experience-meta">Insight Technology Pvt. Ltd. | Dec 2022 – Oct 2023 | Lalitpur, Nepal</div>
+                <ul>
+                    <li>Designed, implemented, and upgraded network infrastructures</li>
+                    <li>Set up and troubleshot multi-vendor platforms including Cisco, Mikrotik, Sophos, and Fortigate</li>
+                    <li>Researched cost-effective solutions for network platforms</li>
+                </ul>
+            </div>
+        </section>
 
-<p>
-This program covered circuit design, digital logic, and communication systems.
-Coursework and projects strengthened understanding of computing platforms and
-networked systems — useful for systems and security work.
-</p>
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Operating Systems</h3>
+                    <p>Linux (Ubuntu, CentOS, RHEL), Windows Server, Linux Internals, Virtualization (VMware, VirtualBox)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Networking</h3>
+                    <p>TCP/IP, SSH, DNS, DHCP, OSPF, BGP, LACP, MSTP, VPLS, VPN, MPLS, Network Design & Simulation, SDN, NFV, Programmable Networks</p>
+                </div>
+                <div class="skill-card">
+                    <h3>AI & Machine Learning</h3>
+                    <p>Machine Learning for Network Optimization, AI-driven Network Analytics, Anomaly Detection, Metaheuristic Algorithms (GA, PSO, SA)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Cybersecurity</h3>
+                    <p>Network Traffic Analysis, Intrusion Detection, Firewall Configuration, Penetration Testing (Nmap, Burpsuite, Metasploit)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>DevOps & Monitoring</h3>
+                    <p>Prometheus, Grafana, Nagios, Docker, Kubernetes, Apache, Nginx, HAProxy</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Scripting</h3>
+                    <p>Bash, Python, System Automation</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Hardware Platforms</h3>
+                    <p>Cisco, Juniper, Huawei, Mikrotik, Sophos, Fortigate</p>
+                </div>
+            </div>
+        </section>
 
-<hr>
+        <section id="publications">
+            <h2>Research Publications</h2>
+            
+            <div class="publication-card">
+                <h3>Automatic Name-based Software Bug Detection via AST-Driven Static Analysis and Machine Learning</h3>
+                <div class="publication-meta">International Journal of Computer Applications | September 22, 2025</div>
+                <p>Introduced a name-based bug detection technique for statically typed languages using ASTs to classify and localize bugs. Generated negative samples from ~720,000 parsed C snippets and achieved 83–95% F1 scores with a tokenized classification model.</p>
+                <a href="https://www.ijcaonline.org/archives/volume187/number39/dahal-2025-ijca-925682.pdf" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 500;">📄 Read Full Paper →</a>
+            </div>
 
-<h2>Skills</h2>
-<ul>
-  <li><strong>Operating Systems & Administration:</strong> Linux (systemd, shell), Windows, virtualization, scripting.</li>
-  <li><strong>Networking & Protocols:</strong> TCP/IP, SSH, DNS, DHCP, OSPF, BGP; routing, switching, multi-vendor troubleshooting.</li>
-  <li><strong>Cybersecurity & Research:</strong> Traffic analysis concepts, vulnerability assessment, firewall configuration.</li>
-  <li><strong>Monitoring & Performance:</strong> Prometheus/Grafana integration, log analysis, capacity planning and alerting.</li>
-</ul>
+            <div class="publication-card">
+                <h3>5G Network Deployment Planning Using Metaheuristic Approaches</h3>
+                <div class="publication-meta">MDPI Telecom | July 9, 2023</div>
+                <p>Optimized 5G base station deployment using Genetic Algorithm, Particle Swarm Optimization, Simulated Annealing, and Grey Wolf Optimizer. Highlighted efficiency of PSO and GA in balancing coverage and capacity for Urban Macro and Remote Macro scenarios.</p>
+                <a href="https://www.mdpi.com/2673-4001/5/3/30" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 500;">📄 Read Full Paper →</a>
+            </div>
+        </section>
 
-<hr>
+        <section id="projects">
+            <h2>Research Projects</h2>
+            
+            <div class="project-card">
+                <h3>NVIDIA GPU Compatibility on RHEL-Kubernetes</h3>
+                <p>Conducted in-depth technical study to assess NVIDIA GPU compatibility with RHEL Kubernetes clusters. Configured GPU passthrough, deployed GPU-enabled containers, and integrated NVIDIA device plugins.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">RHEL 8/9</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">NVIDIA GPU</span>
+                    <span class="tech-tag">Helm</span>
+                    <span class="tech-tag">CRI-O</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://blog.devops.dev/nvidia-gpu-in-a-kubernetes-cluster-on-red-hat-b891c733ac1b" target="_blank" style="color: #667eea;">Read on Medium →</a></p>
+            </div>
 
-<h2>Professional Experience</h2>
+            <div class="project-card">
+                <h3>Extended Berkeley Packet Filter (eBPF) Technical Research</h3>
+                <p>Researched eBPF capabilities for enhancing observability, networking, and security in Linux systems. Implemented eBPF programs for real-time tracing, system call monitoring, and packet filtering at kernel level.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Linux Kernel 5.x+</span>
+                    <span class="tech-tag">eBPF</span>
+                    <span class="tech-tag">BPFTrace</span>
+                    <span class="tech-tag">C</span>
+                    <span class="tech-tag">XDP</span>
+                    <span class="tech-tag">Perf</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://github.com/Shashank7777" target="_blank" style="color: #667eea;">View on GitHub →</a></p>
+            </div>
+        </section>
 
-<h3>Teaching Faculty — NCMT</h3>
-<p><em>May 2025 – Present · Kathmandu, Nepal</em></p>
-<ul>
-  <li>Taught networking and digital logic labs; prepared exercises and assignments.</li>
-  <li>Mentored students on practical projects and research tasks.</li>
-</ul>
+        <section id="blogs">
+            <h2>Technical Blogs</h2>
+            
+            <div class="project-card">
+                <h3>BCC (BPF Compiler Collection) and CO-RE</h3>
+                <p>Deep dive into BPF Compiler Collection and the Compile Once - Run Everywhere paradigm for eBPF, exploring portable eBPF program development across different kernel versions.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">eBPF</span>
+                    <span class="tech-tag">BCC</span>
+                    <span class="tech-tag">CO-RE</span>
+                    <span class="tech-tag">Linux Kernel</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://medium.com/@redemption8848/bcc-bpf-compiler-collection-and-co-re-compile-once-run-everywhere-paradigm-for-ebpf-0359d372270f" target="_blank" style="color: #667eea;">Read on Medium →</a></p>
+            </div>
 
-<h3>System Administrator — Silver Lining Pvt. Ltd.</h3>
-<p><em>Dec 2024 – May 2025 · Kathmandu, Nepal</em></p>
-<ul>
-  <li>Maintained servers and backups; implemented monitoring and incident response.</li>
-  <li>Worked on performance tuning and disaster recovery procedures.</li>
-</ul>
+            <div class="project-card">
+                <h3>TCP Congestion Control Algorithms with Docker and iperf3</h3>
+                <p>Practical exploration of TCP congestion control algorithms on Linux, demonstrating performance testing and analysis using Docker containers and iperf3 benchmarking tool.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">TCP/IP</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">iperf3</span>
+                    <span class="tech-tag">Linux Networking</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://medium.com/@redemption8848/tcp-congestion-control-algorithms-with-docker-and-iperf3-on-linux-a0b53810cffd" target="_blank" style="color: #667eea;">Read on Medium →</a></p>
+            </div>
 
-<h3>Infrastructure Monitoring & Support — Classic Tech Pvt. Ltd.</h3>
-<p><em>Oct 2023 – Sept 2024 · Kathmandu, Nepal</em></p>
-<ul>
-  <li>Operated data-center monitoring and advised on multi-vendor network setups.</li>
-</ul>
+            <div class="project-card">
+                <h3>Understanding Container Networking with Network Namespaces</h3>
+                <p>Comprehensive guide to container networking fundamentals, exploring how network namespaces enable network isolation and connectivity in containerized environments.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Network Namespaces</span>
+                    <span class="tech-tag">Container Networking</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://blog.devops.dev/understanding-container-networking-with-network-namespaces-72f96526fa53" target="_blank" style="color: #667eea;">Read on DevOps.dev →</a></p>
+            </div>
 
-<h3>Network Support Engineer — Insight Technology Pvt. Ltd.</h3>
-<p><em>Dec 2022 – Oct 2023 · Lalitpur, Nepal</em></p>
-<ul>
-  <li>Installed and troubleshot enterprise network equipment (Cisco, Mikrotik, Sophos, Fortigate).</li>
-</ul>
+            <div class="project-card">
+                <h3>Deploying NGINX Load Balancer with Ansible and Jinja2</h3>
+                <p>Step-by-step tutorial on automating NGINX load balancer deployment using Ansible automation and Jinja2 templating for infrastructure as code.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Ansible</span>
+                    <span class="tech-tag">NGINX</span>
+                    <span class="tech-tag">Jinja2</span>
+                    <span class="tech-tag">Load Balancing</span>
+                    <span class="tech-tag">IaC</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://blog.devops.dev/deploying-an-nginx-load-balancer-with-ansible-and-jinja2-templates-0e2c22fd4901" target="_blank" style="color: #667eea;">Read on DevOps.dev →</a></p>
+            </div>
 
-<hr>
+            <div class="project-card">
+                <h3>NVIDIA GPU in Kubernetes Cluster on Red Hat</h3>
+                <p>Detailed walkthrough of integrating NVIDIA GPUs into Red Hat Kubernetes clusters for GPU-accelerated workloads and ML applications.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">NVIDIA GPU</span>
+                    <span class="tech-tag">Red Hat</span>
+                    <span class="tech-tag">GPU Computing</span>
+                </div>
+                <p style="margin-top: 1rem;"><a href="https://blog.devops.dev/nvidia-gpu-in-a-kubernetes-cluster-on-red-hat-b891c733ac1b" target="_blank" style="color: #667eea;">Read on DevOps.dev →</a></p>
+            </div>
+        </section>
 
-<h2>Publications</h2>
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div style="margin-top: 2rem;">
+                <div class="cert-badge">Cisco Certified Network Associate (CCNA)</div>
+                <div class="cert-badge">Certified AppSec Practitioner - The SecOps Group</div>
+            </div>
+        </section>
 
-<p><strong>Automatic Name-based Software Bug Detection via AST-Driven Static Analysis</strong><br>
-International Journal of Computer Applications — 2025<br>
-(Brief: AST-based approach to detect naming-related defects; see CV for details.)</p>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="experience-item">
+                <h3>Bachelor's in Electronics, Communication and Information Engineering</h3>
+                <div class="experience-meta">IOE, Thapathali Engineering Campus | 2019 – 2024 | Kathmandu, Nepal</div>
+                <p>Comprehensive program with strong foundation in computer science and engineering, focusing on electronic systems integration, circuit design, digital logic, and communication systems. Developed expertise in system internals, network security, and Linux-based systems.</p>
+            </div>
+        </section>
 
-<p><strong>5G Network Deployment Planning Using Metaheuristic Approaches</strong><br>
-MDPI Telecom — 2023</p>
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">I'm always interested in discussing new opportunities, research collaborations, or technical challenges.</p>
+            <p><strong>Email:</strong> <a href="mailto:shashank.ghimire8848@gmail.com" style="color: #667eea;">shashank.ghimire8848@gmail.com</a></p>
+            <p><strong>Location:</strong> Kathmandu, Nepal</p>
+            <p><strong>Phone:</strong> +977-9810233895</p>
+        </section>
+    </div>
 
-<hr>
-
-<h2>Certificates</h2>
-<ul>
-  <li>Cisco Certified Network Associate (CCNA) — Credential ID: e35dead15ccf4a31b0f584d8c0c9de45</li>
-  <li>The SecOps Group — Certified AppSec Practitioner — Credential ID: 408798</li>
-</ul>
-
-<hr>
-
-<footer>
-  © Shashank Ghimire — contact by email for CV, references, and opportunities
-</footer>
-
-<script>
-  // minimal print handler
-  document.getElementById('printBtn')?.addEventListener('click', function () {
-    try { window.print(); } catch (e) { /* ignore */ }
-  });
-</script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Shashank Ghimire. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
